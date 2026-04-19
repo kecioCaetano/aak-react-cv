@@ -18,6 +18,15 @@ export default function App() {
         setStates({ ...states, [key]: mode, })
     }
 
+    function setModeAll(mode) {
+        setRootMode(mode)
+        setStates((prev) => Object.keys(prev).reduce((newStates, key) => {
+            newStates[key] = mode
+            return newStates
+        }, {})
+        )
+    }
+
     return (
         <>
             <header className="header__title-wrapper">
@@ -28,12 +37,20 @@ export default function App() {
                     rootMode={rootMode}
                     setMode={setMode}
                     mode={states[0]} />
-                <Educational />
-                <Experience />
+                <Educational
+                    setMode={setMode}
+                    rootMode={rootMode}
+                    mode={states[1]} />
+                <Experience
+                    setMode={setMode}
+                    rootMode={rootMode}
+                    mode={states[2]} />
             </main>
-            <footer>
-                <button>Submit</button>
-                <button>Edit</button>
+            <footer className="footer">
+                <div className="footer__buttons-wrapper">
+                    <button onClick={() => setModeAll('submit')}>Submit</button>
+                    <button onClick={() => setModeAll("edit")}>Edit</button>
+                </div>
             </footer>
         </>
     )
