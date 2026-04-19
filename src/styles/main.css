@@ -1,0 +1,29 @@
+:root{
+    --border-color: rgb(67, 67, 67);
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+input {
+    /* don't forget to fill */
+}
+
+button{
+    /* don't forget to fill */
+}
+
+#root{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 700px;
+    border-inline: 1px solid var(--border-color);
+    min-height: 100vh;
+}
